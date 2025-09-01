@@ -1,18 +1,8 @@
-# Core ML/Math libraries
-numpy==1.26.4
-scipy==1.11.4
-torch==2.1.2
-torchvision==0.16.2
-torchaudio==2.1.2
-
-# Build tools for cbench extensions
-pybind11
-ninja
-pybind11-stubgen==0.10.0
-
-# Compression specific libraries
-pytorch-msssim==0.2.1
-
-# Utilities
-matplotlib
-tqdm
+compressai==1.2.6
+matplotlib==3.10.6
+numpy==2.3.2
+Pillow==11.3.0
+pytorch_msssim==0.2.1
+torch==2.1.2+cu118
+torchvision==0.16.2+cu118
+tqdm==4.67.1
