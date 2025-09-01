@@ -37,6 +37,7 @@ python SlimCAE_PyTorch.py train \
 ```
 
 # Train a SlimCAE with lambda-scheduling
+This is the main command for the second stage after finished Stage 1, lambda-scheduling training using pretrained model from Stage 1 for fine-tuning.
 ```bash
 python SlimCAE_PyTorch.py train_lambda_schedule \
     --num_filters 192 \
