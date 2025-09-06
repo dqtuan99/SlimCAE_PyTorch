@@ -97,7 +97,7 @@ class ImageDataset(Dataset):
 # 3. MODEL DEFINITION
 # ==============================================================================
 
-class SlimCAE_TF_Matched(nn.Module):
+class SlimCAE(nn.Module):
     """
     Slimmable Compressive Autoencoder with an architecture that closely matches
     the provided TensorFlow implementation.
@@ -285,7 +285,7 @@ def train_model(args, device):
     train_dataset = ImageDataset(root_dir=args.train_glob, transform=train_transform)
     train_loader = DataLoader(train_dataset, batch_size=args.batchsize, shuffle=True, num_workers=args.preprocess_threads)
     
-    model = SlimCAE_TF_Matched(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
+    model = SlimCAE(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
     
     main_params = [p for n, p in model.named_parameters() if not n.endswith(".quantiles")]
     aux_params = [p for n, p in model.named_parameters() if n.endswith(".quantiles")]
@@ -362,7 +362,7 @@ def train_lambda_schedule(args, device):
     eval_dataset = ImageDataset(root_dir=args.inputPath, transform=eval_transform)
     eval_loader = DataLoader(eval_dataset, batch_size=1, shuffle=False)
     
-    model = SlimCAE_TF_Matched(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
+    model = SlimCAE(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
     
     main_params = [p for n, p in model.named_parameters() if not n.endswith(".quantiles")]
     aux_params = [p for n, p in model.named_parameters() if n.endswith(".quantiles")]
@@ -454,7 +454,7 @@ def test_model(args, device):
     test_dataset = ImageDataset(root_dir=args.inputPath, transform=test_transform)
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False)
     
-    model = SlimCAE_TF_Matched(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
+    model = SlimCAE(total_filters=args.num_filters, switch_list=args.switch_list).to(device)
 
     if num_models == 1:
         print("\n--- Running Single-Model Evaluation ---")

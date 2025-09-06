@@ -8,17 +8,6 @@ python SlimCAE_PyTorch.py \
     --lmbda 2048 1024 512 256 128 \
     --last_step 1000000
 
-%
-python SlimCAE_PyTorch.py train_lambda_schedule \
-    --num_filters 192 \
-    --switch_list 192 144 96 72 48 \
-    --checkpoint_dir './checkpoints_torch/' \
-    --inputPath './dataset/test/test/' \
-    --lmbda 2048 1024 512 256 128 \
-    --batchsize 8 \
-    --patchsize 128
-%
-
 python SlimCAE_PyTorch.py train_lambda_schedule \
     --num_filters 192 \
     --switch_list 192 144 96 72 48 \
